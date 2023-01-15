@@ -1,10 +1,12 @@
 package com.simpon.api_figma.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
+@Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
 @Table(name = "chats")
 public class Chat {
     @Id
@@ -16,6 +18,10 @@ public class Chat {
             joinColumns = @JoinColumn(name = "chat_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "user_group_id")

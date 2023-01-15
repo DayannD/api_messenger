@@ -1,10 +1,12 @@
 package com.simpon.api_figma.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
+@Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
 @Table(name = "friends")
 public class Friend {
     @Id

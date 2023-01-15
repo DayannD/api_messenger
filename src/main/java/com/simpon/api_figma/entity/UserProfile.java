@@ -1,11 +1,13 @@
 package com.simpon.api_figma.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
 @Table(name = "user_profiles")
 public class UserProfile {
     @Id
@@ -36,8 +38,8 @@ public class UserProfile {
     @Column(name = "age")
     private Integer age;
 
-    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<User> users;
+    @OneToOne(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private User user;
 
 // getters and setters
 }

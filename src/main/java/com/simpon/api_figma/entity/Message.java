@@ -1,8 +1,10 @@
 package com.simpon.api_figma.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
 @Table(name = "messages")
 public class Message {
     @Id
