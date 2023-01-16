@@ -2,16 +2,21 @@ package com.simpon.api_figma.service;
 
 import com.simpon.api_figma.entity.Chat;
 import com.simpon.api_figma.entity.User;
+import com.simpon.api_figma.repository.UserRepository;
 import com.simpon.api_figma.service.interf.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserService implements IUserService {
+
+    @Autowired
+    private UserRepository userRepository;
     @Override
     public User createUser(User user) {
-        return null;
+        return this.userRepository.save(user);
     }
 
     @Override
@@ -26,7 +31,7 @@ public class UserService implements IUserService {
 
     @Override
     public User getUser(Long id) {
-        return null;
+        return this.userRepository.findById(id).get();
     }
 
     @Override

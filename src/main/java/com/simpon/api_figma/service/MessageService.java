@@ -1,16 +1,22 @@
 package com.simpon.api_figma.service;
 
 import com.simpon.api_figma.entity.Message;
+import com.simpon.api_figma.repository.MessageRepository;
 import com.simpon.api_figma.service.interf.IMessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class MessageService implements IMessageService {
+
+    @Autowired
+    private MessageRepository messageRepository;
+
     @Override
     public Message createMessage(Message message) {
-        return null;
+        return this.messageRepository.save(message);
     }
 
     @Override

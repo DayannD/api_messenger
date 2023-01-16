@@ -2,16 +2,21 @@ package com.simpon.api_figma.service;
 
 import com.simpon.api_figma.entity.Chat;
 import com.simpon.api_figma.entity.UserGroup;
+import com.simpon.api_figma.repository.UserGroupRepository;
 import com.simpon.api_figma.service.interf.IUserGroupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserGroupService implements IUserGroupService {
+
+    @Autowired
+    private UserGroupRepository userGroupRepository;
     @Override
     public UserGroup createGroup(UserGroup group) {
-        return null;
+        return this.userGroupRepository.save(group);
     }
 
     @Override

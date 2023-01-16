@@ -29,11 +29,8 @@ public class UserProfile {
     @Column(name = "email_id", nullable = false)
     private String emailId;
 
-    @Column(name = "status")
-    private String status;
-
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "age")
     private Integer age;

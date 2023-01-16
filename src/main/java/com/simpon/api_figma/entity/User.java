@@ -3,12 +3,14 @@ package com.simpon.api_figma.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,7 +33,7 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_friend",
             joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "friend_id"))
-    private List<Friend> friends;
+    private List<Friend> friends = new ArrayList<>();
 
     @Enumerated(EnumType.ORDINAL)
     private Statut statut;

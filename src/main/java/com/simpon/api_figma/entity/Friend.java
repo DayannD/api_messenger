@@ -3,6 +3,7 @@ package com.simpon.api_figma.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Friend {
     private String username;
 
     @ManyToMany(mappedBy = "friends")
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     // getters and setters
 }

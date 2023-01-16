@@ -1,14 +1,19 @@
 package com.simpon.api_figma.service;
 
 import com.simpon.api_figma.entity.UserProfile;
+import com.simpon.api_figma.repository.UserProfileRepository;
 import com.simpon.api_figma.service.interf.IUserProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserProfileService implements IUserProfileService {
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
     @Override
     public UserProfile createUserProfile(UserProfile userProfile) {
-        return null;
+        return this.userProfileRepository.save(userProfile);
     }
 
     @Override
