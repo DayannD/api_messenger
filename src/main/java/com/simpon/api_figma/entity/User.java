@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Setter @Getter @Builder @AllArgsConstructor @NoArgsConstructor
+@Setter @Getter @Builder @AllArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -21,27 +21,38 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+/*    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_user_group",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "user_group_id"))
-    private List<UserGroup> userGroups;
+    private List<UserGroup> userGroups;*/
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "participants", cascade = CascadeType.ALL)
     private List<Chat> chats;
 
+/*
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_friend",
             joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "friend_id"))
     private List<Friend> friends = new ArrayList<>();
+*/
 
+/*
     @Enumerated(EnumType.ORDINAL)
     private Statut statut;
+*/
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Message> messages;
+/*
     @OneToOne
     @JoinColumn(name = "user_profile_id")
     private UserProfile userProfile;
+*/
 
-
+    public User(){
+        this.chats = new ArrayList<>();
+        this.messages = new ArrayList<>();
+    }
     // getters and setters
 }

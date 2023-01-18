@@ -13,9 +13,9 @@ public class Message {
 
     @Column(name = "text", nullable = false)
     private String text;
-
+/*
     @Column(name = "lu", nullable = false)
-    private String isRead;
+    private String isRead;*/
 
     @ManyToOne
     @JoinColumn(name = "user_id")

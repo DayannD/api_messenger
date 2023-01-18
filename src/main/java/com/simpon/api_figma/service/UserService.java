@@ -14,29 +14,16 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
-    @Override
     public User createUser(User user) {
-        return this.userRepository.save(user);
+        return userRepository.save(user);
     }
 
-    @Override
-    public User updateUser(Long id, User user) {
-        return null;
-    }
-
-    @Override
-    public void deleteUser(Long id) {
-
-    }
-
-    @Override
     public User getUser(Long id) {
-        return this.userRepository.findById(id).get();
+        return userRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<User> getAllUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
@@ -47,5 +34,21 @@ public class UserService implements IUserService {
     @Override
     public List<Chat> getGroupsByUserId(Long id) {
         return null;
+    }
+
+    public User updateUser(Long id, User user) {
+        User userToUpdate = userRepository.findById(id).orElse(null);
+        if (userToUpdate != null) {
+            userToUpdate.setUsername(user.getUsername());
+            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setChats(user.getChats());
+/*            userToUpdate.setUserProfile(user.getUserProfile());*/
+            return userRepository.save(userToUpdate);
+        }
+        return null;
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }

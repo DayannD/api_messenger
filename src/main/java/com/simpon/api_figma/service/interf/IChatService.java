@@ -1,6 +1,7 @@
 package com.simpon.api_figma.service.interf;
 
 import com.simpon.api_figma.entity.Chat;
+import com.simpon.api_figma.entity.Message;
 import com.simpon.api_figma.entity.User;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface IChatService {
     public Chat getChatsByUserId(Long userId);
 
     public Chat findChat(Long idCurrentUser,Long idUser);
+    public List<Message> getAllMessages(Long chatId);
 }

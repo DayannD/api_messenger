@@ -34,9 +34,9 @@ public class UserProfile {
 
     @Column(name = "age")
     private Integer age;
-
+/*
     @OneToOne(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private User user;
+    private User user;*/
 
 // getters and setters
 }
